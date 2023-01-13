@@ -53,7 +53,7 @@ if (ti_simplelink_board == "CC1352R1_LAUNCHXL") {
 } else if (ti_simplelink_board == "LP_EM_CC1354P10_6") {
   ti_simplelink_device_family = "cc13x4_26x4"
   ti_simplelink_soc_family = "cc13x4"
-  ti_simplelink_isa = "m33"
+  ti_simplelink_isa = "m33f"
 
   # set -DDeviceFamily_CC26X2?
   ti_simplelink_soc = "cc1354p10"
