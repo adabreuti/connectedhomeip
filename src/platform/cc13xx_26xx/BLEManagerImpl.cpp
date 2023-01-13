@@ -61,8 +61,8 @@ extern "C" {
 // BLE Manager Debug Logs
 extern "C" {
 #ifdef BLEMGR_DBG_LOGGING
-extern void cc13x2_26x2Log(const char * aFormat, ...);
-#define BLEMGR_LOG(...) cc13x2_26x2Log(__VA_ARGS__);
+extern void cc13xx_26xxLog(const char * aFormat, ...);
+#define BLEMGR_LOG(...) cc13xx_26xxLog(__VA_ARGS__);
 #else
 #define BLEMGR_LOG(...)
 #endif

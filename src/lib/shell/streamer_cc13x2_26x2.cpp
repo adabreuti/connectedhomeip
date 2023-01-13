@@ -37,13 +37,13 @@ namespace Shell {
 
 UART_Handle sStreamUartHandle = NULL;
 
-#if !MATTER_CC13X2_26X2_PLATFORM_LOG_ENABLED
-extern "C" int cc13x2_26x2LogInit(void)
+#if !MATTER_CC13XX_26XX_PLATFORM_LOG_ENABLED
+extern "C" int cc13xx_26xxLogInit(void)
 {
     return 0;
 }
 
-extern "C" void cc13x2_26x2VLog(const char * msg, va_list v)
+extern "C" void cc13xx_26xxVLog(const char * msg, va_list v)
 {
     if (NULL != sStreamUartHandle)
     {
@@ -62,7 +62,7 @@ extern "C" void cc13x2_26x2VLog(const char * msg, va_list v)
         }
     }
 }
-#endif // !MATTER_CC13X2_26X2_PLATFORM_LOG_ENABLED
+#endif // !MATTER_CC13XX_26XX_PLATFORM_LOG_ENABLED
 
 int streamer_cc13x2_26x2_init(streamer_t * streamer)
 {

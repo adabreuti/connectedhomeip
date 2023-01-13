@@ -56,9 +56,9 @@ extern "C" void vApplicationStackOverflowHook(void)
 static TaskHandle_t sTestTaskHandle;
 void TestTask(void * pvParameter)
 {
-    cc13x2_26x2LogInit();
+    cc13xx_26xxLogInit();
 
-    chip::DeviceLayer::Internal::CC13X2_26X2Config().Init();
+    chip::DeviceLayer::Internal::CC13XX_26XXConfig().Init();
 
     while (true)
     {

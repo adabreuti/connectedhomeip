@@ -60,7 +60,7 @@ static TaskHandle_t sAppTaskHandle;
 
 // Logging
 extern "C" {
-int cc13x2_26x2LogInit(void);
+int cc13xx_26xxLogInit(void);
 }
 
 #if CHIP_DEVICE_CONFIG_ENABLE_OTA_REQUESTOR
@@ -102,7 +102,7 @@ CHIP_ERROR AppTask::Init()
 {
     CHIP_ERROR err = CHIP_NO_ERROR;
 
-    cc13x2_26x2LogInit();
+    cc13xx_26xxLogInit();
 
     // Init Chip memory management before the stack
     Platform::MemoryInit();

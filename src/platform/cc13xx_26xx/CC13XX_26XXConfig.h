@@ -19,7 +19,7 @@
 /**
  *    @file
  *          Utilities for accessing persisted device configuration on
- *          Texas Instruments cc13x2_26x2 SoCs.
+ *          Texas Instruments cc13xx_26xx SoCs.
  */
 
 #pragma once
@@ -32,7 +32,7 @@ namespace chip {
 namespace DeviceLayer {
 namespace Internal {
 
-class CC13X2_26X2Config
+class CC13XX_26XXConfig
 {
 public:
     struct Key;
@@ -46,13 +46,13 @@ public:
     static constexpr uint16_t kNVinf_itemid_chipKVS_key   = 4;
     static constexpr uint16_t kNVinf_itemid_chipKVS_value = 5;
 
-    static const uint16_t kCC13X2_26X2Matter_SysID = kNvinf_sysid_chip;
+    static const uint16_t kCC13XX_26XXMatter_SysID = kNvinf_sysid_chip;
 
-    static const uint16_t kCC13X2_26X2Matter_ItemID_ChipConfig    = kNVinf_itemid_chipConfig;
-    static const uint16_t kCC13X2_26X2Matter_ItemID_ChipFactory   = kNVinf_itemid_chipFactory;
-    static const uint16_t kCC13X2_26X2Matter_ItemID_ChipCounters  = kNVinf_itemid_chipCounters;
-    static const uint16_t kCC13X2_26X2Matter_ItemID_ChipKVS_key   = kNVinf_itemid_chipKVS_key;
-    static const uint16_t kCC13X2_26X2Matter_ItemID_ChipKVS_value = kNVinf_itemid_chipKVS_value;
+    static const uint16_t kCC13XX_26XXMatter_ItemID_ChipConfig    = kNVinf_itemid_chipConfig;
+    static const uint16_t kCC13XX_26XXMatter_ItemID_ChipFactory   = kNVinf_itemid_chipFactory;
+    static const uint16_t kCC13XX_26XXMatter_ItemID_ChipCounters  = kNVinf_itemid_chipCounters;
+    static const uint16_t kCC13XX_26XXMatter_ItemID_ChipKVS_key   = kNVinf_itemid_chipKVS_key;
+    static const uint16_t kCC13XX_26XXMatter_ItemID_ChipKVS_value = kNVinf_itemid_chipKVS_value;
 
     // Key definitions for well-known keys.
     static const Key kConfigKey_SerialNum;
@@ -108,14 +108,14 @@ public:
     static CHIP_ERROR ClearKVS(const char * key);
 };
 
-struct CC13X2_26X2Config::Key
+struct CC13XX_26XXConfig::Key
 {
     NVINTF_itemID_t nvID;
 
     bool operator==(const Key & other) const;
 };
 
-inline bool CC13X2_26X2Config::Key::operator==(const Key & other) const
+inline bool CC13XX_26XXConfig::Key::operator==(const Key & other) const
 {
     return (nvID.systemID == other.nvID.systemID && nvID.itemID == other.nvID.itemID && nvID.subID == other.nvID.subID);
 }

@@ -26,7 +26,7 @@
 #include <bget.h>
 #include <lib/support/logging/CHIPLogging.h>
 #include <platform/DiagnosticDataProvider.h>
-#include <platform/cc13x2_26x2/DiagnosticDataProviderImpl.h>
+#include <platform/cc13xx_26xx/DiagnosticDataProviderImpl.h>
 
 #include <driverlib/sys_ctrl.h>
 

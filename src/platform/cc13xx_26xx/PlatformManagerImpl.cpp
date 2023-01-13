@@ -27,7 +27,7 @@
 
 #include <crypto/CHIPCryptoPAL.h>
 #include <platform/PlatformManager.h>
-#include <platform/cc13x2_26x2/DiagnosticDataProviderImpl.h>
+#include <platform/cc13xx_26xx/DiagnosticDataProviderImpl.h>
 #include <platform/internal/GenericPlatformManagerImpl_FreeRTOS.ipp>
 
 #include <lwip/tcpip.h>
@@ -105,7 +105,7 @@ CHIP_ERROR PlatformManagerImpl::_InitChipStack(void)
     CHIP_ERROR err;
 
     // Initialize the configuration system.
-    err = Internal::CC13X2_26X2Config::Init();
+    err = Internal::CC13XX_26XXConfig::Init();
     SuccessOrExit(err);
 
     // DMM Addition

@@ -30,7 +30,7 @@
 #include <lib/core/CHIPEncoding.h>
 #include <lib/core/CHIPPersistentStorageDelegate.h>
 #include <lib/support/CodeUtils.h>
-#include <platform/cc13x2_26x2/CC13X2_26X2Config.h>
+#include <platform/cc13xx_26xx/CC13XX_26XXConfig.h>
 
 #include <ti/common/nv/nvintf.h>
 #include <ti/common/nv/nvocmp.h>
@@ -44,94 +44,94 @@ namespace Internal {
 /* itemID and subID are limited to 10 bits, even though their types are uint16_t */
 
 // Keys stored in the Chip-factory namespace
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_SerialNum = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0001 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_SerialNum = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0001 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_MfrDeviceId = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0002 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_MfrDeviceId = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0002 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_MfrDeviceCert = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0003 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_MfrDeviceCert = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0003 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_MfrDeviceICACerts = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0004 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_MfrDeviceICACerts = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0004 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_MfrDevicePrivateKey = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0005 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_MfrDevicePrivateKey = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0005 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_HardwareVersion = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0006 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_HardwareVersion = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0006 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_ManufacturingDate = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0007 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_ManufacturingDate = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0007 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_SetupPinCode = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0008 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_SetupPinCode = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0008 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_SetupDiscriminator = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0009 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_SetupDiscriminator = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0009 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_Spake2pIterationCount = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x000a }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_Spake2pIterationCount = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x000a }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_Spake2pSalt = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x000b }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_Spake2pSalt = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x000b }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_Spake2pVerifier = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x000c }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_Spake2pVerifier = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x000c }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_LifeTimeCounter = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipFactory, .subID = 0x0010 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_LifeTimeCounter = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipFactory, .subID = 0x0010 }
 };
 
 // Keys stored in the Chip-counters namespace
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_BootCount = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipCounters, .subID = 0x000d }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_BootCount = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipCounters, .subID = 0x000d }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_TotalOperationalHours = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipCounters, .subID = 0x000f }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_TotalOperationalHours = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipCounters, .subID = 0x000f }
 };
 
 // Keys stored in the Chip-config namespace
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_ServiceConfig = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x0012 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_ServiceConfig = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x0012 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_PairedAccountId = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x0013 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_PairedAccountId = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x0013 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_ServiceId = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x0014 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_ServiceId = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x0014 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_LastUsedEpochKeyId = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x00017 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_LastUsedEpochKeyId = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x00017 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_FailSafeArmed = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x00018 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_FailSafeArmed = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x00018 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_WiFiStationSecType = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x00019 }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_WiFiStationSecType = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x00019 }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_RegulatoryLocation = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x0001a }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_RegulatoryLocation = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x0001a }
 };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_CountryCode = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x0001b }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_CountryCode = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x0001b }
 };
 // itemID 0x001c is unused (used to be breadcrumb).
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_UniqueId = {
-    { .systemID = kCC13X2_26X2Matter_SysID, .itemID = kCC13X2_26X2Matter_ItemID_ChipConfig, .subID = 0x0001d }
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_UniqueId = {
+    { .systemID = kCC13XX_26XXMatter_SysID, .itemID = kCC13XX_26XXMatter_ItemID_ChipConfig, .subID = 0x0001d }
 };
 
 /* Internal for the KVS interface. */
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_KVS_key   = { { .systemID = kCC13X2_26X2Matter_SysID,
-                                                                         .itemID   = kCC13X2_26X2Matter_ItemID_ChipKVS_key } };
-const CC13X2_26X2Config::Key CC13X2_26X2Config::kConfigKey_KVS_value = { { .systemID = kCC13X2_26X2Matter_SysID,
-                                                                           .itemID   = kCC13X2_26X2Matter_ItemID_ChipKVS_value } };
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_KVS_key   = { { .systemID = kCC13XX_26XXMatter_SysID,
+                                                                         .itemID   = kCC13XX_26XXMatter_ItemID_ChipKVS_key } };
+const CC13XX_26XXConfig::Key CC13XX_26XXConfig::kConfigKey_KVS_value = { { .systemID = kCC13XX_26XXMatter_SysID,
+                                                                           .itemID   = kCC13XX_26XXMatter_ItemID_ChipKVS_value } };
 
 /* Static local variables */
 static NVINTF_nvFuncts_t sNvoctpFps = { 0 };
 
-CHIP_ERROR CC13X2_26X2Config::Init()
+CHIP_ERROR CC13XX_26XXConfig::Init()
 {
     CHIP_ERROR err = CHIP_NO_ERROR;
 
@@ -144,7 +144,7 @@ CHIP_ERROR CC13X2_26X2Config::Init()
     return err;
 }
 
-CHIP_ERROR CC13X2_26X2Config::ReadConfigValue(Key key, bool & val)
+CHIP_ERROR CC13XX_26XXConfig::ReadConfigValue(Key key, bool & val)
 {
     CHIP_ERROR ret;
     size_t ignore;
@@ -152,32 +152,32 @@ CHIP_ERROR CC13X2_26X2Config::ReadConfigValue(Key key, bool & val)
 
     ret = ReadConfigValueBin(key, &localVal, sizeof(localVal), ignore);
 
-    // reference CC13X2_26X2Config::WriteConfigValue(Key key, bool val) for storage of boolean values
+    // reference CC13XX_26XXConfig::WriteConfigValue(Key key, bool val) for storage of boolean values
     val = (localVal != 0);
 
     return ret;
 }
 
-CHIP_ERROR CC13X2_26X2Config::ReadConfigValue(Key key, uint32_t & val)
+CHIP_ERROR CC13XX_26XXConfig::ReadConfigValue(Key key, uint32_t & val)
 {
     size_t ignore;
 
     return ReadConfigValueBin(key, (uint8_t *) &val, sizeof(val), ignore);
 }
 
-CHIP_ERROR CC13X2_26X2Config::ReadConfigValue(Key key, uint64_t & val)
+CHIP_ERROR CC13XX_26XXConfig::ReadConfigValue(Key key, uint64_t & val)
 {
     size_t ignore;
 
     return ReadConfigValueBin(key, (uint8_t *) &val, sizeof(val), ignore);
 }
 
-CHIP_ERROR CC13X2_26X2Config::ReadConfigValueStr(Key key, char * buf, size_t bufSize, size_t & outLen)
+CHIP_ERROR CC13XX_26XXConfig::ReadConfigValueStr(Key key, char * buf, size_t bufSize, size_t & outLen)
 {
     return ReadConfigValueBin(key, (uint8_t *) buf, bufSize, outLen);
 }
 
-CHIP_ERROR CC13X2_26X2Config::ReadConfigValueBin(Key key, uint8_t * buf, size_t bufSize, size_t & outLen)
+CHIP_ERROR CC13XX_26XXConfig::ReadConfigValueBin(Key key, uint8_t * buf, size_t bufSize, size_t & outLen)
 {
     CHIP_ERROR err = CHIP_NO_ERROR;
     size_t len;
@@ -202,8 +202,8 @@ static uint8_t FindKVSSubID(const char * key, uint16_t & subID)
     NVINTF_nvProxy_t nvProxy = { 0 };
     uint8_t status           = NVINTF_SUCCESS;
 
-    nvProxy.sysid  = CC13X2_26X2Config::kConfigKey_KVS_key.nvID.systemID;
-    nvProxy.itemid = CC13X2_26X2Config::kConfigKey_KVS_key.nvID.itemID;
+    nvProxy.sysid  = CC13XX_26XXConfig::kConfigKey_KVS_key.nvID.systemID;
+    nvProxy.itemid = CC13XX_26XXConfig::kConfigKey_KVS_key.nvID.itemID;
     nvProxy.buffer = key_scratch;
     nvProxy.len    = sizeof(key_scratch);
     nvProxy.flag   = NVINTF_DOSTART | NVINTF_DOITMID | NVINTF_DOREAD;
@@ -228,11 +228,11 @@ static uint8_t FindKVSSubID(const char * key, uint16_t & subID)
     return status;
 }
 
-CHIP_ERROR CC13X2_26X2Config::ReadKVS(const char * key, void * value, size_t value_size, size_t * read_bytes_size,
+CHIP_ERROR CC13XX_26XXConfig::ReadKVS(const char * key, void * value, size_t value_size, size_t * read_bytes_size,
                                       size_t offset_bytes)
 {
     CHIP_ERROR err           = CHIP_NO_ERROR;
-    NVINTF_itemID_t val_item = CC13X2_26X2Config::kConfigKey_KVS_value.nvID;
+    NVINTF_itemID_t val_item = CC13XX_26XXConfig::kConfigKey_KVS_value.nvID;
     uint16_t subID;
     size_t len;
     uint16_t read_len;
@@ -269,39 +269,39 @@ exit:
     return err;
 }
 
-CHIP_ERROR CC13X2_26X2Config::WriteConfigValue(Key key, bool val)
+CHIP_ERROR CC13XX_26XXConfig::WriteConfigValue(Key key, bool val)
 {
     uint8_t localVal = val ? 1 : 0;
     return WriteConfigValueBin(key, (const uint8_t *) &localVal, sizeof(localVal));
 }
 
-CHIP_ERROR CC13X2_26X2Config::WriteConfigValue(Key key, uint32_t val)
+CHIP_ERROR CC13XX_26XXConfig::WriteConfigValue(Key key, uint32_t val)
 {
     return WriteConfigValueBin(key, (const uint8_t *) &val, sizeof(val));
 }
 
-CHIP_ERROR CC13X2_26X2Config::WriteConfigValue(Key key, uint64_t val)
+CHIP_ERROR CC13XX_26XXConfig::WriteConfigValue(Key key, uint64_t val)
 {
     return WriteConfigValueBin(key, (const uint8_t *) &val, sizeof(val));
 }
 
-CHIP_ERROR CC13X2_26X2Config::WriteConfigValueStr(Key key, const char * str)
+CHIP_ERROR CC13XX_26XXConfig::WriteConfigValueStr(Key key, const char * str)
 {
     size_t strLen = strlen(str);
     return WriteConfigValueBin(key, (const uint8_t *) str, strLen);
 }
-CHIP_ERROR CC13X2_26X2Config::WriteConfigValueStr(Key key, const char * str, size_t strLen)
+CHIP_ERROR CC13XX_26XXConfig::WriteConfigValueStr(Key key, const char * str, size_t strLen)
 {
     return WriteConfigValueBin(key, (const uint8_t *) str, strLen);
 }
 
-CHIP_ERROR CC13X2_26X2Config::WriteKVS(const char * key, const void * value, size_t value_size)
+CHIP_ERROR CC13XX_26XXConfig::WriteKVS(const char * key, const void * value, size_t value_size)
 {
     CHIP_ERROR err = CHIP_NO_ERROR;
     uint16_t subID;
 
-    NVINTF_itemID_t key_item = CC13X2_26X2Config::kConfigKey_KVS_key.nvID;
-    NVINTF_itemID_t val_item = CC13X2_26X2Config::kConfigKey_KVS_value.nvID;
+    NVINTF_itemID_t key_item = CC13XX_26XXConfig::kConfigKey_KVS_key.nvID;
+    NVINTF_itemID_t val_item = CC13XX_26XXConfig::kConfigKey_KVS_value.nvID;
 
     if (FindKVSSubID(key, subID) != NVINTF_SUCCESS)
     {
@@ -354,7 +354,7 @@ exit:
     return err;
 }
 
-CHIP_ERROR CC13X2_26X2Config::WriteConfigValueBin(Key key, const uint8_t * data, size_t dataLen)
+CHIP_ERROR CC13XX_26XXConfig::WriteConfigValueBin(Key key, const uint8_t * data, size_t dataLen)
 {
     CHIP_ERROR err = CHIP_NO_ERROR;
 
@@ -364,12 +364,12 @@ exit:
     return err;
 }
 
-CHIP_ERROR CC13X2_26X2Config::ClearKVS(const char * key)
+CHIP_ERROR CC13XX_26XXConfig::ClearKVS(const char * key)
 {
     CHIP_ERROR err = CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
     uint16_t subID;
-    NVINTF_itemID_t key_item = CC13X2_26X2Config::kConfigKey_KVS_key.nvID;
-    NVINTF_itemID_t val_item = CC13X2_26X2Config::kConfigKey_KVS_value.nvID;
+    NVINTF_itemID_t key_item = CC13XX_26XXConfig::kConfigKey_KVS_key.nvID;
+    NVINTF_itemID_t val_item = CC13XX_26XXConfig::kConfigKey_KVS_value.nvID;
 
     if (FindKVSSubID(key, subID) == NVINTF_SUCCESS)
     {
@@ -396,7 +396,7 @@ CHIP_ERROR CC13X2_26X2Config::ClearKVS(const char * key)
     return err;
 }
 
-CHIP_ERROR CC13X2_26X2Config::ClearConfigValue(Key key)
+CHIP_ERROR CC13XX_26XXConfig::ClearConfigValue(Key key)
 {
     CHIP_ERROR err = CHIP_NO_ERROR;
 
@@ -405,13 +405,13 @@ exit:
     return err;
 }
 
-bool CC13X2_26X2Config::ConfigValueExists(Key key)
+bool CC13XX_26XXConfig::ConfigValueExists(Key key)
 {
     /* 0 is an invalid length for an item, getting a length of 0 means there is no item */
     return (0 != sNvoctpFps.getItemLen(key.nvID));
 }
 
-CHIP_ERROR CC13X2_26X2Config::FactoryResetConfig(void)
+CHIP_ERROR CC13XX_26XXConfig::FactoryResetConfig(void)
 {
     CHIP_ERROR err           = CHIP_NO_ERROR;
     NVINTF_nvProxy_t nvProxy = { 0 };
@@ -423,8 +423,8 @@ CHIP_ERROR CC13X2_26X2Config::FactoryResetConfig(void)
     intptr_t key = sNvoctpFps.lockNV();
 
     /* Setup doNext call */
-    nvProxy.sysid  = kCC13X2_26X2Matter_SysID;
-    nvProxy.itemid = kCC13X2_26X2Matter_ItemID_ChipConfig;
+    nvProxy.sysid  = kCC13XX_26XXMatter_SysID;
+    nvProxy.itemid = kCC13XX_26XXMatter_ItemID_ChipConfig;
     nvProxy.flag   = NVINTF_DOSTART | NVINTF_DOITMID | NVINTF_DODELETE;
 
     /* Lock and wipe all items with config itemid */
@@ -436,8 +436,8 @@ CHIP_ERROR CC13X2_26X2Config::FactoryResetConfig(void)
     VerifyOrExit(status == NVINTF_NOTFOUND, err = CHIP_ERROR_PERSISTED_STORAGE_FAILED);
 
     /* Setup doNext call */
-    nvProxy.sysid  = kCC13X2_26X2Matter_SysID;
-    nvProxy.itemid = kCC13X2_26X2Matter_ItemID_ChipCounters;
+    nvProxy.sysid  = kCC13XX_26XXMatter_SysID;
+    nvProxy.itemid = kCC13XX_26XXMatter_ItemID_ChipCounters;
     nvProxy.flag   = NVINTF_DOSTART | NVINTF_DOITMID | NVINTF_DODELETE;
 
     /* Lock and wipe all items with counters itemid */
@@ -449,8 +449,8 @@ CHIP_ERROR CC13X2_26X2Config::FactoryResetConfig(void)
     VerifyOrExit(status == NVINTF_NOTFOUND, err = CHIP_ERROR_PERSISTED_STORAGE_FAILED);
 
     /* Setup doNext call */
-    nvProxy.sysid  = kCC13X2_26X2Matter_SysID;
-    nvProxy.itemid = kCC13X2_26X2Matter_ItemID_ChipKVS_key;
+    nvProxy.sysid  = kCC13XX_26XXMatter_SysID;
+    nvProxy.itemid = kCC13XX_26XXMatter_ItemID_ChipKVS_key;
     nvProxy.flag   = NVINTF_DOSTART | NVINTF_DOITMID | NVINTF_DODELETE;
 
     /* Lock and wipe all items with kvs_key itemid */
@@ -462,8 +462,8 @@ CHIP_ERROR CC13X2_26X2Config::FactoryResetConfig(void)
     VerifyOrExit(status == NVINTF_NOTFOUND, err = CHIP_ERROR_PERSISTED_STORAGE_FAILED);
 
     /* Setup doNext call */
-    nvProxy.sysid  = kCC13X2_26X2Matter_SysID;
-    nvProxy.itemid = kCC13X2_26X2Matter_ItemID_ChipKVS_value;
+    nvProxy.sysid  = kCC13XX_26XXMatter_SysID;
+    nvProxy.itemid = kCC13XX_26XXMatter_ItemID_ChipKVS_value;
     nvProxy.flag   = NVINTF_DOSTART | NVINTF_DOITMID | NVINTF_DODELETE;
 
     /* Lock and wipe all items with key_value itemid */
@@ -485,10 +485,10 @@ exit:
     return err;
 }
 
-void CC13X2_26X2Config::RunConfigUnitTest()
+void CC13XX_26XXConfig::RunConfigUnitTest()
 {
     // Run common unit test.
-    ::chip::DeviceLayer::Internal::RunConfigUnitTest<CC13X2_26X2Config>();
+    ::chip::DeviceLayer::Internal::RunConfigUnitTest<CC13XX_26XXConfig>();
 }
 
 } // namespace Internal
