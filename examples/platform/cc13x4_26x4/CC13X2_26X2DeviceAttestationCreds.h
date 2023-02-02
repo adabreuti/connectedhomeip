@@ -1,8 +1,6 @@
 /*
  *
- *    Copyright (c) 2020 Project CHIP Authors
- *    Copyright (c) 2019 Google LLC.
- *    All rights reserved.
+ *    Copyright (c) 2022 Project CHIP Authors
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -16,14 +14,23 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-
-/**
- *    @file
- *      Overrides to default OpenThread configuration.
- *
- */
-
 #pragma once
 
-// Use the TI-supplied default platform configuration for remainder
-#include "openthread-core-cc13x4_26x4-config.h"
+#include <credentials/DeviceAttestationCredsProvider.h>
+
+namespace chip {
+namespace Credentials {
+namespace CC13X2_26X2 {
+
+/**
+ * @brief Get implementation of a sample DAC provider to validate device
+ *        attestation procedure.
+ *
+ * @returns a singleton DeviceAttestationCredentialsProvider that relies on no
+ *          storage abstractions.
+ */
+DeviceAttestationCredentialsProvider * GetCC13X2_26X2DacProvider();
+
+} // namespace CC13X2_26X2
+} // namespace Credentials
+} // namespace chip

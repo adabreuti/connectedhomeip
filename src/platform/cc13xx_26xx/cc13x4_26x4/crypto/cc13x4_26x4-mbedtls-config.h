@@ -40,11 +40,11 @@
 /* Enable Hardware Acceleration */
 
 //#define MBEDTLS_AES_ALT
-#define MBEDTLS_ECDH_COMPUTE_SHARED_ALT
-#define MBEDTLS_ECDH_GEN_PUBLIC_ALT
-#define MBEDTLS_ECDSA_SIGN_ALT
-#define MBEDTLS_ECDSA_VERIFY_ALT
-#define MBEDTLS_ENTROPY_HARDWARE_ALT
+//#define MBEDTLS_ECDH_COMPUTE_SHARED_ALT
+//#define MBEDTLS_ECDH_GEN_PUBLIC_ALT
+//#define MBEDTLS_ECDSA_SIGN_ALT
+//#define MBEDTLS_ECDSA_VERIFY_ALT
+//#define MBEDTLS_ENTROPY_HARDWARE_ALT
 //#define MBEDTLS_SHA256_ALT
 
 // Thread Joining disabled
@@ -115,6 +115,8 @@
 #define MBEDTLS_PEM_PARSE_C
 #define MBEDTLS_X509_USE_C
 #define MBEDTLS_X509_CRT_PARSE_C
+#define MBEDTLS_PKCS5_C
+
 
 #define MBEDTLS_MPI_WINDOW_SIZE 1       /**< Maximum windows size used. */
 #define MBEDTLS_MPI_MAX_SIZE 32         /**< Maximum number of bytes for usable MPIs. */

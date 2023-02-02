@@ -109,6 +109,9 @@ template("ti_sysconfig") {
       "freertos",
     ]
 
+    print(ti_simplelink_board)
+
+
     foreach(source, sources) {
       args += [ rebase_path(source, root_build_dir) ]
     }
@@ -351,13 +354,13 @@ template("ti_simplelink_sdk") {
       configs -= [ "${build_root}/config/compiler:std_default" ]
       configs += [ ":${sdk_target_name}_posix_config" ]
       sources = [
+        "${ti_simplelink_sdk_root}/source/ti/common/nv/nvocmp.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/alarm.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/alarm_micro.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/diag.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/entropy.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/misc.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/nv/crc.c",
-        "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/nv/nvocmp.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/radio.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/settings.c",
         "${ti_simplelink_sdk_root}/examples/rtos/${ti_simplelink_board}/thread/${openthread_example}/platform/system.c",
@@ -478,7 +481,7 @@ template("ti_simplelink_sdk") {
         "${ti_simplelink_sdk_root}/source/ti/ble5stack_flash/libraries/cc1354p10_6/StackWrapper.a",
       ]
       defines += [
-        "FLASH_ONLY_BUILD",
+        "ONE_BLE_LIB_SIZE_OPTIMIZATION",
         "NVOCMP_NWSAMEITEM=1",
         "CC13X2P",
         "SYSCFG",
@@ -591,6 +594,10 @@ template("ti_simplelink_sdk") {
           "${ti_simplelink_sdk_root}/source/ti/ble5stack/profiles/dev_info/cc26xx/devinfoservice.c",
           "${ti_simplelink_sdk_root}/source/ti/ble5stack/rom/agama_r1/rom_init.c",
       ]
+
+     include_dirs += [
+      "${chip_root}/src/platform/cc13xx_26xx/cc13x2_26x2/",
+    ]
     } else if (ti_simplelink_device_family == "cc13x4_26x4") {
       sources += [
           "${chip_root}/src/platform/cc13xx_26xx/cc13x4_26x4/ble_user_config.c",
@@ -603,6 +610,10 @@ template("ti_simplelink_sdk") {
           "${ti_simplelink_sdk_root}/source/ti/ble5stack_flash/profiles/dev_info/cc26xx/devinfoservice.c",
           "${ti_simplelink_sdk_root}/source/ti/ble5stack_flash/rom/agama_r1/rom_init.c",
       ]
+
+        include_dirs += [
+     "${chip_root}/src/platform/cc13xx_26xx/cc13x4_26x4/",
+    ]
     }
 
     configs -= [ "${build_root}/config/compiler:std_default" ]

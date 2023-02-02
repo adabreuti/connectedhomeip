@@ -126,7 +126,7 @@ CHIP_ERROR ConfigurationManagerImpl::StoreTotalOperationalHours(uint32_t totalOp
 
 CHIP_ERROR ConfigurationManagerImpl::ReadPersistedStorageValue(::chip::Platform::PersistedStorage::Key key, uint32_t & value)
 {
-    CC13XX_26XXConfig::Key configKey{ { CC13XX_26XXConfig::kCC13X2_26X2Matter_SysID, key } };
+    CC13XX_26XXConfig::Key configKey{ { CC13XX_26XXConfig::kCC13XX_26XXMatter_SysID, key } };
 
     CHIP_ERROR err = ReadConfigValue(configKey, value);
     if (err == CHIP_DEVICE_ERROR_CONFIG_NOT_FOUND)
@@ -138,7 +138,7 @@ CHIP_ERROR ConfigurationManagerImpl::ReadPersistedStorageValue(::chip::Platform:
 
 CHIP_ERROR ConfigurationManagerImpl::WritePersistedStorageValue(::chip::Platform::PersistedStorage::Key key, uint32_t value)
 {
-    CC13XX_26XXConfig::Key configKey{ { CC13XX_26XXConfig::kCC13X2_26X2Matter_SysID, key } };
+    CC13XX_26XXConfig::Key configKey{ { CC13XX_26XXConfig::kCC13XX_26XXMatter_SysID, key } };
     return WriteConfigValue(configKey, value);
 }
 

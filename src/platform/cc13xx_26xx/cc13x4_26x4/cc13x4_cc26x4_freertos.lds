@@ -21,7 +21,7 @@
  * Linkerscript for a non-OTA Matter executable.
  */
 
-STACKSIZE = 0x800;
+STACKSIZE = 0x2000;
 
 MEMORY
 {
@@ -223,16 +223,14 @@ SECTIONS {
     PROVIDE (_flash_end_address = .);
 
     /* Two pages of NV Memory (0x800 each) offset by 1 page for BIM/CCFG */
-    .nvs (0xFE800) (NOLOAD) : AT (0xFE800) ALIGN(0x2000) {
+    /*.nvs (NOLOAD) : ALIGN(0x2000) { */
+    .nvs (0xFA000) (NOLOAD) : AT (0xFA000) ALIGN(0x2000) {
         *(.nvs)
     } > REGION_TEXT
 
-    /* CCFG is supplied by the BIM project */
-    /*
     .ccfg : {
         KEEP (*(.ccfg))
     } > FLASH_CCFG AT> FLASH_CCFG
-    */
 
     .bss : {
         __bss_start__ = .;

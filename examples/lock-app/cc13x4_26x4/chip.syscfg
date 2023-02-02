@@ -26,11 +26,10 @@ var LED         = scripting.addModule("/ti/drivers/apps/LED");
 var NVS         = scripting.addModule("/ti/drivers/NVS");
 var RF          = scripting.addModule("/ti/drivers/RF");
 var RFDesign    = scripting.addModule("ti/devices/radioconfig/rfdesign");
-var RTOS        = scripting.addModule("/ti/drivers/RTOS");
 var TRNG        = scripting.addModule("/ti/drivers/TRNG");
 var Thread      = scripting.addModule("/ti/thread/thread");
 var SHA2        = scripting.addModule("/ti/drivers/SHA2");
-var UART        = scripting.addModule("/ti/drivers/UART");
+var UART        = scripting.addModule("/ti/drivers/UART2");
 var ble         = scripting.addModule("/ti/ble5stack/ble");
 var dmm         = scripting.addModule("/ti/dmm/dmm");
 var AESCTRDRBG  = scripting.addModule("/ti/drivers/AESCTRDRBG");
@@ -64,9 +63,6 @@ AESECB2.$name = "CONFIG_AESECB_1";
 
 ECDH1.$name = "CONFIG_ECDH0";
 
-/* RTOS */
-RTOS.name = "FreeRTOS";
-
 /* Left Button */
 Button1.$name                       = "CONFIG_BTN_LEFT";
 Button1.$hardware                   = system.deviceData.board.components["BTN-1"];
@@ -89,13 +85,21 @@ for(var setting in ccfgSettings)
     CCFG[setting] = ccfgSettings[setting];
 }
 
-// Disable CCFG generation, this is added by the BIM project
-CCFG.enableCodeGeneration = false;
+CCFG.enableCodeGeneration = true;
+//CCFG.xoscCapArray             = true;
+//CCFG.enableBootloader         = true;
+//CCFG.enableBootloaderBackdoor = true;
+//CCFG.dioBootloaderBackdoor    = 15;
+//CCFG.levelBootloaderBackdoor  = "Active low";
+//CCFG.xoscCapArrayDelta        = 0xD5;
+//CCFG.ccfgTemplate.$name       = "ti_devices_CCFG_CCFGCC26XXTemplate0";
+
 
 /* NVS */
 NVS1.$name                      = "CONFIG_NVSINTERNAL";
-NVS1.internalFlash.regionBase = 0xFE800;
-NVS1.internalFlash.regionSize = 0x1000;
+NVS1.internalFlash.regionBase = 0xFA000;
+NVS1.internalFlash.regionSize = 0x4000;
+
 
 NVS2.$name                                 = "CONFIG_NVSEXTERNAL";
 NVS2.nvsType                               = "External"; // NVS Region Type
@@ -136,8 +140,6 @@ TRNG1.$name     = "CONFIG_TRNG_0";
 TRNG2.$name     = "CONFIG_TRNG_1";
 TRNG3.$name     = "CONFIG_TRNG_APP";
 
-RTOS.name = "FreeRTOS";
-
 /* BLE */
 ble.addressMode                                           = "ADDRMODE_RP_WITH_PUBLIC_ID";
 ble.maxConnNum                                            = 1;
@@ -152,6 +154,8 @@ ble.connUpdateParamsPeripheral.reqMaxConnInt               = 50;
 
 ble.advSet1.$name                                         = "ti_ble5stack_broadcaster_advertisement_set0";
 ble.advSet1.advParam1.$name                               = "ti_ble5stack_broadcaster_advertisement_params0";
+
+ble.rfDesign                                 = "LP_EM_CC1354P10_6";
 
 ble.thorPg = 2;
 /* DMM */
@@ -191,3 +195,16 @@ dmm.policyArray[3].$name                             = "ti_dmm_policy_dmm_policy
 dmm.policyArray[3].blePeripheral.$name               = "ti_dmm_policy_stack_dmm_stack_ble3";
 dmm.policyArray[3].threadFTD.$name                   = "ti_dmm_policy_stack_dmm_stack_thread3";
 dmm.policyArray[3].threadFTD.weight                  = 1;
+
+/* Thread */
+Thread.rf.rfDesign        = rfDesignSettings.rfDesign;
+Thread.rf.radioConfig.codeExportConfig.symGenMethod  = "Custom";
+if (system.deviceData.deviceId.match(/CC26.2|CC13.R.(R)(1|7)|CC2652(R)7/))
+{
+Thread.rf.radioConfig.codeExportConfig.cmdRadioSetup = "RF_cmdIeeeRadioSetup";
+}
+else
+{
+Thread.rf.radioConfig.codeExportConfig.cmdRadioSetupPa = "RF_cmdIeeeRadioSetup";
+}
+

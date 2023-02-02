@@ -198,10 +198,13 @@ antennaIOEntry_t antennaTbl[ANTENNA_TABLE_SIZE] = {
                                    BV(27) | BV(28) | BV(30)  // antenna 11
 };
 
+#ifdef RTLS_CTE
 // Antenna properties passes to the stack
 cteAntProp_t  appCTEAntProp = {ANTENNA_IO_MASK,
                                ANTENNA_TABLE_SIZE,
                                antennaTbl};
+#endif
+
 #ifdef CC23X0
 ECCParams_CurveParams eccParams_NISTP256 = {
     .curveType      = ECCParams_CURVE_TYPE_SHORT_WEIERSTRASS_AN3,

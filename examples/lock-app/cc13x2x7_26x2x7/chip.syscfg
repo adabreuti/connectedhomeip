@@ -18,6 +18,7 @@
  */
 
 
+
 /* Modules */
 var AESCCM      = scripting.addModule("/ti/drivers/AESCCM");
 var AESECB      = scripting.addModule("/ti/drivers/AESECB");
@@ -30,7 +31,7 @@ var RTOS        = scripting.addModule("/ti/drivers/RTOS");
 var TRNG        = scripting.addModule("/ti/drivers/TRNG");
 var Thread      = scripting.addModule("/ti/thread/thread");
 var SHA2        = scripting.addModule("/ti/drivers/SHA2");
-var UART        = scripting.addModule("/ti/drivers/UART");
+var UART        = scripting.addModule("/ti/drivers/UART2");
 var ble         = scripting.addModule("/ti/ble5stack/ble");
 var dmm         = scripting.addModule("/ti/dmm/dmm");
 var AESCTRDRBG  = scripting.addModule("/ti/drivers/AESCTRDRBG");

@@ -56,19 +56,19 @@
  only heap available, for both FreeRTOS and application */
 #define configTOTAL_HEAP_SIZE ((size_t)(0))
 #define configCHECK_FOR_STACK_OVERFLOW 2
-#define configUSE_PORT_OPTIMISED_TASK_SELECTION 1
+#define configUSE_PORT_OPTIMISED_TASK_SELECTION 0
 #define configEXPECTED_IDLE_TIME_BEFORE_SLEEP 2
 
 /* Stack sizes, all in words */
-#define configMINIMAL_STACK_SIZE ((unsigned short)(512))
+#define configMINIMAL_STACK_SIZE ((unsigned short)(1024))
 #define configPOSIX_STACK_SIZE ((unsigned short)(1024))
 
 /* Software timer definitions. */
 #define configUSE_TIMERS 1
 #define configTIMER_TASK_PRIORITY (6)
 #define configTIMER_QUEUE_LENGTH (20)
-#define configTIMER_TASK_STACK_DEPTH (configMINIMAL_STACK_SIZE)
-#define configIDLE_TASK_STACK_DEPTH (configMINIMAL_STACK_SIZE)
+#define configTIMER_TASK_STACK_DEPTH (configMINIMAL_STACK_SIZE * 2)
+#define configIDLE_TASK_STACK_DEPTH (configMINIMAL_STACK_SIZE * 2)
 
 /* TrustZone/PSA settings */
 /* We do not set ENABLE_TRUSTZONE, as this is only for Secure Side function call support */

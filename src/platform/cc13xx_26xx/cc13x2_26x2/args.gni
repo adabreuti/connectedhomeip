@@ -26,7 +26,7 @@ openthread_external_mbedtls = mbedtls_target
 openthread_external_platform =
     "${ti_simplelink_sdk_build_root}:ti_simplelink_sdk"
 
-lwip_platform = "cc13x2_26x2"
+lwip_platform = "cc13xx_26xx"
 
 chip_inet_config_enable_ipv4 = false
 

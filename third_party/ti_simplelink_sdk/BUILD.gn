@@ -89,9 +89,10 @@ config("ti_simplelink_freertos_config") {
     ]
   } else if (ti_simplelink_device_family == "cc13x4_26x4") {
     include_dirs = [
-      "${chip_root}/src/platform/cc13xx_26xx",
       "${chip_root}/src/platform/cc13xx_26xx/cc13x4_26x4",
-      "${freertos_root}/repo/portable/GCC/ARM_CM4F",
+      "${freertos_root}/repo/portable/GCC/ARM_CM33_NTZ",
+      "${freertos_root}/repo/portable/GCC/ARM_CM33_NTZ/non_secure",
+      "${chip_root}/src/platform/cc13xx_26xx",
     ]
   } else if (ti_simplelink_device_family == "cc32xx") {
     include_dirs = [
@@ -112,6 +113,7 @@ freertos_target("freertos") {
       ti_simplelink_device_family == "cc13x4_26x4") {
     sources = [
       "${freertos_root}/repo/portable/GCC/ARM_CM33_NTZ/non_secure/port.c",
+      "${freertos_root}/repo/portable/GCC/ARM_CM33_NTZ/non_secure/portasm.c",
       #"${freertos_root}/repo/portable/MemMang/heap_4.c",
     ]
   } else if (ti_simplelink_device_family == "cc32xx") {
